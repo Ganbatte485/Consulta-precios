@@ -1,11 +1,15 @@
 from flask import Flask, render_template, request
 import csv
+import os
 
 app = Flask(__name__)
 
 IVA = 0.19
-ARCHIVO_DETALLE = "detalle.csv"
-ARCHIVO_MAYOR = "mayor.csv"
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+ARCHIVO_DETALLE = os.path.join(BASE_DIR, "Detalle.csv")
+ARCHIVO_MAYOR = os.path.join(BASE_DIR, "Mayor.csv")
 
 
 def buscar_producto(codigo, archivo):
@@ -66,4 +70,5 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
+    
